@@ -18,5 +18,7 @@ namespace MyFeedback.Application.Command.CommandDto.ExitSlip
         public Guid LessonId { get; set; }
 
         public List<MyFeedback.Domain.Entities.Question> QuestionList { get; set; }
+
+        public bool IsPublished { get; set; }
     }
 }

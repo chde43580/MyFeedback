@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
-using MyFeedback.Domain.Entities;
 
 namespace MyFeedback.Api.Pages
 {
@@ -12,6 +11,8 @@ namespace MyFeedback.Api.Pages
     public class TeacherExitSlipStartPageModel : PageModel
     {
         private readonly IExitSlipQuery _exitSlipQuery;
+
+        public IEnumerable<ExitSlipDto> ExitSlipDtoList { get; set; }
 
         public TeacherExitSlipStartPageModel(IExitSlipQuery exitSlipQuery)
         {
@@ -25,7 +26,7 @@ namespace MyFeedback.Api.Pages
                 return RedirectToPage("/StudentExitSlipStartPage");
             }
 
-           IEnumerable<ExitSlipDto> listOfDtosToDisplay = _exitSlipQuery.GetAll();
+          ExitSlipDtoList = _exitSlipQuery.GetAll();
 
 
 

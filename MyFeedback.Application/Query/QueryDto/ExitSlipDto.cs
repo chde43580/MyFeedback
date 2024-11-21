@@ -18,5 +18,7 @@ namespace MyFeedback.Application.Query.QueryDto
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
+
+        public bool IsPublished { get; set; }
     }
 }

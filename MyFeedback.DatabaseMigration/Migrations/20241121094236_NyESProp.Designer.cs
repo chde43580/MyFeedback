@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyFeedback.Infrastructure;
 
@@ -11,9 +12,11 @@ using MyFeedback.Infrastructure;
 namespace MyFeedback.DatabaseMigration.Migrations
 {
     [DbContext(typeof(MyFeedbackContext))]
-    partial class MyFeedbackContextModelSnapshot : ModelSnapshot
+    [Migration("20241121094236_NyESProp")]
+    partial class NyESProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

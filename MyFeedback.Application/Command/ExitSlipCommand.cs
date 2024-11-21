@@ -27,7 +27,7 @@ namespace MyFeedback.Application.Command
             {
                 _unitOfWork.BeginTransaction(System.Data.IsolationLevel.Serializable);
 
-                ExitSlip newExitSlip = ExitSlip.Create(createExitSlipDto.LessonId, new List<Question>());
+                ExitSlip newExitSlip = ExitSlip.Create(createExitSlipDto.LessonId, new List<Question>(), createExitSlipDto.IsPublished);
 
                 foreach (var questionDto in createExitSlipDto.QuestionList)
                 {

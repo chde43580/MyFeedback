@@ -6,10 +6,11 @@ using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Command.CommandDto.Question;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Repositories;
+using System.Configuration;
 
 namespace MyFeedback.Api.Pages
 {
-    [Authorize("IsTeacher")]
+    [Authorize("IsLoggedIn")]
     public class ExitSlipModel : PageModel
     {
      //   private readonly IExitSlipRepo _exitSlipRepo;
@@ -18,6 +19,8 @@ namespace MyFeedback.Api.Pages
 
         private readonly IExitSlipQuery _exitSlipQuery;
 
+       private readonly HttpClient _httpClient;
+
         //[BindProperty]
         //public CreateExitSlipDto createExitSlipDto { get; set; }
 
@@ -25,23 +28,24 @@ namespace MyFeedback.Api.Pages
         public CreateQuestionDto questionDto { get; set; }
 
        
+       
 
 
-
-        public ExitSlipModel(IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery/*, IExitSlipRepo exitSlipRepo*/)
+        public ExitSlipModel(HttpClient httpClient, IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery/*, IExitSlipRepo exitSlipRepo*/)
         {
        //     this._exitSlipRepo = exitSlipRepo;
 
             this._exitSlipCommand = exitSlipCommand;
 
             this._exitSlipQuery = exitSlipQuery;
+
+            this._httpClient = httpClient;
         }
 
-        public void OnGet()
+        public void OnGet(Guid? id)
         {
-            // Flyttes til index
-
-          //  ExitSlipQueryResult slips = _exitSlipQuery.Get(Guid id);
+            var dto = this._httpClient.Get().First().QuestionList.FirstOrDefault(a => a.Id == id);
+            this.questionDto = new CreateQuestionDto { QuestionNumber = dto.QuestionNumber, QuestionText = dto.QuestionText };
         }
 
         public void OnPost() 

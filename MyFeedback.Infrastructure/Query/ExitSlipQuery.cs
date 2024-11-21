@@ -29,6 +29,7 @@ namespace MyFeedback.Infrastructure.Query
                 LessonId = e.LessonId,
                 QuestionList = e.QuestionList,
                 RowVersion = e.RowVersion,
+                IsPublished = e.IsPublished,
             });
 
              

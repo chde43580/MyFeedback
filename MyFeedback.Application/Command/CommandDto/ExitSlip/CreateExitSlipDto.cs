@@ -14,6 +14,8 @@ namespace MyFeedback.Application.Command.CommandDto.ExitSlip
 
         public List<CreateQuestionDto> QuestionList { get; set; } = null!;
 
+        public bool IsPublished { get; set; }
+
         //public CreateExitSlipDto(Guid lessonId, List<Question> questionList)
         //{
         //    this.LessonId = lessonId;
