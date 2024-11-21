@@ -27,5 +27,7 @@ namespace MyFeedback.Domain.Entities
 
             return newExitSlip;
         }
+
+        public 
     }
 }

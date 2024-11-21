@@ -1,0 +1,25 @@
+﻿@page
+@model MyFeedback.Api.Pages.TeacherExitSlipStartPageModel
+@{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th scope="col">Lesson Id</th>
+                <th scope="col">Evt. spg-liste</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var _exitSlip in MyFeedback.Application.Command.CommandDto.ExitSlip.CreateExitSlipDto)
+            {
+                <tr>
+                    <th scope="row">@_exitSlip.Id</th>
+                    <td>@_exitSlip.LessonId</td>
+                    <td>@_exitSlip.</td>
+                    <td><a href="/ExitSlip/@_exitSlip.Id" class="btn btn-secondary">Show details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

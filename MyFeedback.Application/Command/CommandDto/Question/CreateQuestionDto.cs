@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyFeedback.Application.Command.CommandDto
+namespace MyFeedback.Application.Command.CommandDto.Question
 {
     public record CreateQuestionDto
     {

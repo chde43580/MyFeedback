@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MyFeedback.Application.Query;
+using MyFeedback.Infrastructure.Query;
 
 
 namespace MyFeedback.Infrastructure
@@ -17,7 +19,7 @@ namespace MyFeedback.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            //  services.AddScoped<IBookingQuery, BookingQuery>();
+            services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
             services.AddScoped<IExitSlipRepo, ExitSlipRepo>();
 
             //   services.AddScoped<IAccomodationQuery, AccomodationQuery>();
@@ -38,8 +40,9 @@ namespace MyFeedback.Infrastructure
                 x =>
                     x.MigrationsAssembly("MyFeedback.DatabaseMigration")));
 
+           
 
-        services.AddScoped<IUnitOfWork, UnitOfWork>(p =>
+            services.AddScoped<IUnitOfWork, UnitOfWork>(p =>
         {
             var db = p.GetService<MyFeedbackContext>();
             return new UnitOfWork(db);

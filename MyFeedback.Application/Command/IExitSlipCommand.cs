@@ -1,4 +1,4 @@
-﻿using MyFeedback.Application.Command.CommandDto;
+﻿using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +10,9 @@ namespace MyFeedback.Application.Command
     public interface IExitSlipCommand
     {
         void CreateExitSlip(CreateExitSlipDto createExitSlipDto);
+
+        void UpdateExitSlip(UpdateExitSlipDto updateExitSlipDto);
+
+        void DeleteExitSlip(DeleteExitSlipDto deleteExitSlipDto);
     }
 }

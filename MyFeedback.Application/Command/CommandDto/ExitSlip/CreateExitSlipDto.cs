@@ -1,11 +1,12 @@
-﻿using MyFeedback.Domain.Entities;
+﻿using MyFeedback.Application.Command.CommandDto.Question;
+using MyFeedback.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyFeedback.Application.Command.CommandDto
+namespace MyFeedback.Application.Command.CommandDto.ExitSlip
 {
     public record CreateExitSlipDto
     {

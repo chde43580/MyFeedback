@@ -1,13 +1,22 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MyFeedback.Application.Command.CommandDto;
+using MyFeedback.Application.Command;
+using MyFeedback.Application.Command.CommandDto.ExitSlip;
+using MyFeedback.Application.Command.CommandDto.Question;
+using MyFeedback.Application.Query;
 using MyFeedback.Application.Repositories;
 
 namespace MyFeedback.Api.Pages
 {
+    [Authorize("IsTeacher")]
     public class ExitSlipModel : PageModel
     {
-        private readonly IExitSlipRepo _exitSlipRepo;
+     //   private readonly IExitSlipRepo _exitSlipRepo;
+
+        private readonly IExitSlipCommand _exitSlipCommand;
+
+        private readonly IExitSlipQuery _exitSlipQuery;
 
         //[BindProperty]
         //public CreateExitSlipDto createExitSlipDto { get; set; }
@@ -15,15 +24,24 @@ namespace MyFeedback.Api.Pages
         [BindProperty]
         public CreateQuestionDto questionDto { get; set; }
 
+       
 
 
-        public ExitSlipModel(IExitSlipRepo exitSlipRepo)
+
+        public ExitSlipModel(IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery/*, IExitSlipRepo exitSlipRepo*/)
         {
-            this._exitSlipRepo = exitSlipRepo;
+       //     this._exitSlipRepo = exitSlipRepo;
+
+            this._exitSlipCommand = exitSlipCommand;
+
+            this._exitSlipQuery = exitSlipQuery;
         }
 
         public void OnGet()
         {
+            // Flyttes til index
+
+          //  ExitSlipQueryResult slips = _exitSlipQuery.Get(Guid id);
         }
 
         public void OnPost() 
@@ -52,7 +70,9 @@ namespace MyFeedback.Api.Pages
 
             createExitSlipDto.LessonId = new Guid(); // NEEDS TO BE THE ACTUAL LESSON ID LATER ON
    
-          _exitSlipRepo.AddExitSlipDto(createExitSlipDto);
+        //  _exitSlipRepo.AddExitSlipDto(createExitSlipDto);
+
+            _exitSlipCommand.CreateExitSlip(createExitSlipDto);
 
          //   return RedirectToPage?
 

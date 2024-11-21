@@ -1,4 +1,4 @@
-﻿using MyFeedback.Application.Command.CommandDto;
+﻿using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Repositories;
 using MyFeedback.Domain.Entities;
 using System;
@@ -20,29 +20,6 @@ namespace MyFeedback.Infrastructure.Repositories
 
         void IExitSlipRepo.AddExitSlip(ExitSlip exitSlip)
         {
-            _dbContext.ExitSlips.Add(exitSlip);
-
-            _dbContext.SaveChanges();
-        }
-
-        void IExitSlipRepo.AddExitSlipDto(CreateExitSlipDto exitSlipDto)
-        {
-            // Her konverteres fra DTO til domæne-entitet - måske bare midlertidigt?
-
-         
-
-            var exitSlip = new ExitSlip{
-                LessonId = exitSlipDto.LessonId,
-                QuestionList = new List<Question>()
-            };
-
-            foreach (var questionDto in exitSlipDto.QuestionList)
-            {
-                Question tempQuestion = new Question(questionDto.QuestionNumber, questionDto.QuestionText);
-
-                exitSlip.QuestionList.Add(tempQuestion);
-            }
-
             _dbContext.ExitSlips.Add(exitSlip);
 
             _dbContext.SaveChanges();

@@ -10,8 +10,4 @@
     <ProjectReference Include="..\MyFeedback.Domain\MyFeedback.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Query\" />
-  </ItemGroup>
-
 </Project>

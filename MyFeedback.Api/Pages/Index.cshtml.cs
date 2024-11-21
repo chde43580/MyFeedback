@@ -12,9 +12,11 @@ namespace MyFeedback.Api.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            return RedirectToPage("/Account/Login", new { area = "Identity" });
+           
+
+           // return RedirectToPage("/Account/Login?ReturnUrl=%2FIndex", new { area = "Identity" });
         }
     }
 }

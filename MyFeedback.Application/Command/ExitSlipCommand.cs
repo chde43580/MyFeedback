@@ -1,4 +1,4 @@
-﻿using MyFeedback.Application.Command.CommandDto;
+﻿using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Repositories;
 using MyFeedback.Domain.Entities;
 using System;
@@ -51,5 +51,40 @@ namespace MyFeedback.Application.Command
             }
             
         }
+
+        void IExitSlipCommand.UpdateExitSlip(UpdateExitSlipDto updateExitSlipDto)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction(System.Data.IsolationLevel.Serializable);
+
+                ExitSlip oldExitSlip = _exitSlipRepo.GetExitSlip(updateExitSlipDto.Id);
+
+                oldExitSlip.QuestionList = updateExitSlipDto.QuestionList;
+
+                _exitSlipRepo.UpdateExitSlip(oldExitSlip, updateExitSlipDto.RowVersion); // Har DTO'en her fået et RowVersion?
+
+                _unitOfWork.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                _unitOfWork.Rollback();
+
+                throw (ex);
+
+            }
+        }
+
+        void IExitSlipCommand.DeleteExitSlip(DeleteExitSlipDto deleteExitSlipDto)
+        {
+            // Vi har bevidst her ikke implementeret nogen uow-funktionalitet; idet dette blot er en Delete-operation
+
+           ExitSlip exitSlipToDelete = _exitSlipRepo.GetExitSlip(deleteExitSlipDto.Id);
+
+            _exitSlipRepo.DeleteExitSlip(exitSlipToDelete, deleteExitSlipDto.RowVersion);
+        }
+
+
     }
 }

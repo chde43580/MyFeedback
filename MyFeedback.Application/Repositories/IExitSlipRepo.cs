@@ -12,8 +12,6 @@ namespace MyFeedback.Application.Repositories
     {
         ExitSlip GetExitSlip(Guid id);
 
-        void AddExitSlipDto(CreateExitSlipDto exitSlipDto);
-
         void AddExitSlip(ExitSlip exitSlip);
 
         void UpdateExitSlip(ExitSlip exitSlip, byte[] rowVersion);

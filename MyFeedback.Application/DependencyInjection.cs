@@ -14,6 +14,9 @@ namespace MyFeedback.Application
         {
             services.AddScoped<IExitSlipCommand, ExitSlipCommand>();
 
+           
+
+
             return services;
         }
     }

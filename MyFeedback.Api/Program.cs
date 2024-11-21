@@ -9,14 +9,26 @@ using MyFeedback.Application;
 // Database-migrationer kommandoer:
 
 // Add-Migration [MigrationNAVN] -Context MyFeedbackContext -Project MyFeedback.DatabaseMigration
-// Update - Database - Context MyFeedbackContext - Project MyFeedback.DatabaseMigration
+// Update-Database -Context MyFeedbackContext -Project MyFeedback.DatabaseMigration
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(
+"IsTeacher",
+policyBuilder => policyBuilder
+    .RequireClaim("IsTeacher"))
+   .AddPolicy(
+"IsLoggedIn",
+policyBuilder => policyBuilder
+    .RequireAuthenticatedUser());
 
 // Add services to the container.
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -30,6 +42,19 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 }
     )
     .AddEntityFrameworkStores<MyFeedbackContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Cookie settings
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
+
+    options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.SlidingExpiration = true;
+});
+
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
