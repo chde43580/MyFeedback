@@ -1,10 +1,16 @@
 using MyFeedback.Infrastructure;
 using MyFeedback.Application;
+using MyFeedback.Application.Query;
+using MyFeedback.Infrastructure.Query;
+using MyFeedback.Backend.Controllers;
+using MyFeedback.Backend.TypedClients.Interfaces;
+using MyFeedback.Backend.TypedClients.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+
+// Add controllers
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -13,6 +19,10 @@ builder.Services.AddSwaggerGen();
 // Tilføjer vores to separate Dependency Injection-klasser fra Application-, hhv. Infrastructure-lagene
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+// IHTTPClientFactory
+builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
 
 var app = builder.Build();
 

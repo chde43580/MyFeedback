@@ -6,6 +6,8 @@ using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Command.CommandDto.Question;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Repositories;
+using MyFeedback.Backend.Controllers;
+using MyFeedback.Infrastructure.TypedClients.Interfaces;
 using System.Configuration;
 
 namespace MyFeedback.Api.Pages
@@ -13,39 +15,45 @@ namespace MyFeedback.Api.Pages
     [Authorize("IsLoggedIn")]
     public class ExitSlipModel : PageModel
     {
-     //   private readonly IExitSlipRepo _exitSlipRepo;
 
         private readonly IExitSlipCommand _exitSlipCommand;
 
         private readonly IExitSlipQuery _exitSlipQuery;
 
-       private readonly HttpClient _httpClient;
+        private readonly IExitSlipClient _exitSlipClient;
 
-        //[BindProperty]
-        //public CreateExitSlipDto createExitSlipDto { get; set; }
+        //   private readonly ExitSlipController _exitSlipController;
+
+
 
         [BindProperty]
-        public CreateQuestionDto questionDto { get; set; }
-
-       
-       
+        public CreateExitSlipDto createExitSlipDto { get; set; }
 
 
-        public ExitSlipModel(HttpClient httpClient, IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery/*, IExitSlipRepo exitSlipRepo*/)
+        public ExitSlipModel(IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery, IExitSlipClient exitSlipClient /*, ExitSlipController exitSlipController */)
         {
-       //     this._exitSlipRepo = exitSlipRepo;
 
             this._exitSlipCommand = exitSlipCommand;
 
             this._exitSlipQuery = exitSlipQuery;
 
-            this._httpClient = httpClient;
-        }
+            this._exitSlipClient = exitSlipClient;
 
+            //     this._exitSlipController = exitSlipController;
+
+
+        }
+       
         public void OnGet(Guid? id)
         {
-            var dto = this._httpClient.Get().First().QuestionList.FirstOrDefault(a => a.Id == id);
-            this.questionDto = new CreateQuestionDto { QuestionNumber = dto.QuestionNumber, QuestionText = dto.QuestionText };
+            //   var exitSlipDto = this._exitSlipController.Get(id);
+
+        //    ExitSlipClient exitSlipClient = new ExitSlipClient();
+
+        //    var jsonResponse = exitSlipClient.Get(id);
+
+
+           // Skal guid måske være nullable
         }
 
         public void OnPost() 

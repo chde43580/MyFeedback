@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyFeedback.Application\MyFeedback.Application.csproj" />
+    <ProjectReference Include="..\MyFeedback.Backend\MyFeedback.Backend.csproj" />
     <ProjectReference Include="..\MyFeedback.DatabaseMigration\MyFeedback.DatabaseMigration.csproj" />
   </ItemGroup>
 

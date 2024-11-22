@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MyFeedback.Application.Query;
+using MyFeedback.Application.Query.QueryDto;
 using MyFeedback.Domain.Entities;
+using MyFeedback.Infrastructure.TypedClients.Implementations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +14,8 @@ namespace MyFeedback.Backend.Controllers
     public class ExitSlipController : ControllerBase
     {
         private readonly IExitSlipQuery _exitSlipQuery;
+
+        private readonly ExitSlipClient _exitSlipClient;
 
         public ExitSlipController(IExitSlipQuery exitSlipQuery)
         {
@@ -26,12 +30,16 @@ namespace MyFeedback.Backend.Controllers
         }
 
         // GET api/<ExitSlipController>/5
-        [HttpGet("{id}")]
-        public Question Get(Guid id)
-        {
-            var dto = this._exitSlipQuery.GetAll().First().QuestionList.FirstOrDefault(a => a.Id == id);
 
-            return dto;
+        [HttpGet("{id}")]
+        public ExitSlipDto Get(Guid id)
+        {
+
+
+            var queryResult = _exitSlipQuery.Get(id);
+
+            return queryResult;
+           
         }
 
         // POST api/<ExitSlipController>

@@ -21,6 +21,7 @@ namespace MyFeedback.Infrastructure
         {
             services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
             services.AddScoped<IExitSlipRepo, ExitSlipRepo>();
+   //       services.AddScoped<IExitSlipClient, ExitSlipClient>();
 
             //   services.AddScoped<IAccomodationQuery, AccomodationQuery>();
             //   services.AddScoped<IAccomodationRepository, AccomodationRepository>();
@@ -33,7 +34,7 @@ namespace MyFeedback.Infrastructure
 
             // DATABASE CONFIGS
 
-             services.AddDbContext<MyFeedbackContext>(options =>
+            services.AddDbContext<MyFeedbackContext>(options =>
             options.UseSqlServer(
                 configuration.GetConnectionString
                     ("DefaultConnection"),

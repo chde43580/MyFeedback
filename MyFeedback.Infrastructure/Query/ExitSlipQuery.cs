@@ -36,5 +36,20 @@ namespace MyFeedback.Infrastructure.Query
 
             return listOfDtos;
         }
+
+        ExitSlipDto IExitSlipQuery.Get(Guid id)
+        {
+            var exitSlip = _dbContext.ExitSlips.AsNoTracking().Single(e => e.Id == id);
+
+            return new ExitSlipDto
+            {
+                Id = exitSlip.Id,
+                LessonId = exitSlip.LessonId,
+                QuestionList = exitSlip.QuestionList,
+                RowVersion = exitSlip.RowVersion,
+                IsPublished = exitSlip.IsPublished
+            };
+
+    }
     }
 }
