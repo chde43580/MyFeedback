@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Tilføjer vores to separate Dependency Injection-klasser fra Application-, hhv. Infrastructure-lagene
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
