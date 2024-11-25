@@ -1,7 +1,7 @@
 ﻿using Azure;
 using Microsoft.VisualBasic;
 using MyFeedback.Domain.Entities;
-using MyFeedback.Infrastructure.TypedClients.Interfaces;
+using MyFeedback.Backend.TypedClients.Interfaces;
 
 namespace MyFeedback.Backend.TypedClients.Implementations
 {

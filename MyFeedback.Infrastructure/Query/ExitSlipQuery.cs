@@ -37,19 +37,28 @@ namespace MyFeedback.Infrastructure.Query
             return listOfDtos;
         }
 
-        ExitSlipDto IExitSlipQuery.Get(Guid id)
+        ExitSlipDto IExitSlipQuery.Get(Guid? id)
         {
-            var exitSlip = _dbContext.ExitSlips.AsNoTracking().Single(e => e.Id == id);
+            ExitSlip domainExitSlip = _dbContext.ExitSlips.AsNoTracking().Include(e => e.QuestionList).Single(e => e.Id == id);
 
-            return new ExitSlipDto
+
+
+            ExitSlipDto dtoToReturn = new ExitSlipDto
             {
-                Id = exitSlip.Id,
-                LessonId = exitSlip.LessonId,
-                QuestionList = exitSlip.QuestionList,
-                RowVersion = exitSlip.RowVersion,
-                IsPublished = exitSlip.IsPublished
+                Id = domainExitSlip.Id,
+                LessonId = domainExitSlip.LessonId,
+                QuestionList = domainExitSlip.QuestionList,
+                 RowVersion = domainExitSlip.RowVersion,
+                IsPublished = domainExitSlip.IsPublished
             };
 
-    }
+            //foreach (var question in domainExitSlip.QuestionList)
+            //{
+            //    dtoToReturn.QuestionList.Add(question);
+            //}
+
+            return dtoToReturn;
+
+        }
     }
 }

@@ -25,6 +25,10 @@ namespace MyFeedback.Domain.Entities
             return newQuestion;
         }
 
-      //  public Question Update
+        public void Update(int questionNumber, string questionText)
+        {
+            this.QuestionNumber = questionNumber;
+            this.QuestionText = questionText;
+        }
     }
 }

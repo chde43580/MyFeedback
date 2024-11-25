@@ -3,7 +3,7 @@
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
 using MyFeedback.Domain.Entities;
-using MyFeedback.Infrastructure.TypedClients.Implementations;
+using MyFeedback.Backend.TypedClients.Implementations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

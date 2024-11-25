@@ -33,6 +33,11 @@ namespace MyFeedback.Domain.Entities
             return newExitSlip;
         }
 
-    //    public 
+        public void Update(Guid lessonId, List<Question> questionList, bool isPublished)
+        {
+            this.LessonId = lessonId;
+            this.QuestionList = questionList;
+            this.IsPublished = isPublished;
+        }
     }
 }

@@ -21,8 +21,8 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 // IHTTPClientFactory
-builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
-    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
+//builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
+//    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
 
 var app = builder.Build();
 

@@ -11,5 +11,34 @@ namespace MyFeedback.Domain.Entities
         public Guid QuestionId { get; protected set; }
         public Guid IdentityUserId { get; protected set; }
         public string AnswerText { get; protected set; }
+
+        //Nul-constructor
+        //public Answer()
+        //{
+            
+        //}
+
+        public Answer(Guid questionId, Guid identityUserId, string answerText)
+        {
+            this.QuestionId = questionId;
+            this.IdentityUserId = identityUserId;
+            this.AnswerText = answerText;
+        }
+
+        public Answer Create(Guid questionId, Guid identityUserId, string answerText)
+        {
+            Answer newAnswer = new Answer(questionId, identityUserId, answerText);
+
+            return newAnswer;
+        }
+
+        public void Update(Guid questionId, Guid identityUserId, string answerText)
+        {
+            this.QuestionId = questionId;
+            this.IdentityUserId = identityUserId;
+            this.AnswerText = answerText;
+        }
     }
+
+
 }

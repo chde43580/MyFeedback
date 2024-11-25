@@ -5,9 +5,10 @@ using MyFeedback.Application.Command;
 using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Command.CommandDto.Question;
 using MyFeedback.Application.Query;
+using MyFeedback.Application.Query.QueryDto;
 using MyFeedback.Application.Repositories;
 using MyFeedback.Backend.Controllers;
-using MyFeedback.Infrastructure.TypedClients.Interfaces;
+using MyFeedback.Backend.TypedClients.Interfaces;
 using System.Configuration;
 
 namespace MyFeedback.Api.Pages
@@ -28,6 +29,9 @@ namespace MyFeedback.Api.Pages
 
         [BindProperty]
         public CreateExitSlipDto createExitSlipDto { get; set; }
+
+        [BindProperty]
+        public ExitSlipDto exitSlipDto { get; set; }
 
 
         public ExitSlipModel(IExitSlipCommand exitSlipCommand, IExitSlipQuery exitSlipQuery, IExitSlipClient exitSlipClient /*, ExitSlipController exitSlipController */)
@@ -54,6 +58,8 @@ namespace MyFeedback.Api.Pages
 
 
            // Skal guid måske være nullable
+
+      //      this.exitSlipDto.
         }
 
         public void OnPost() 

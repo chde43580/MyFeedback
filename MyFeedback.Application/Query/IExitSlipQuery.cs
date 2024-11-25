@@ -12,6 +12,6 @@ namespace MyFeedback.Application.Query
     {
         IEnumerable<ExitSlipDto> GetAll();
 
-        ExitSlipDto Get(Guid id);
+        ExitSlipDto Get(Guid? id);
     }
 }

@@ -62,6 +62,8 @@ namespace MyFeedback.Application.Command
 
                 oldExitSlip.QuestionList = updateExitSlipDto.QuestionList;
 
+                oldExitSlip.IsPublished = updateExitSlipDto.IsPublished;      
+
                 _exitSlipRepo.UpdateExitSlip(oldExitSlip, updateExitSlipDto.RowVersion); // Har DTO'en her fået et RowVersion?
 
                 _unitOfWork.Commit();

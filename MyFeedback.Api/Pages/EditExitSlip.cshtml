@@ -1,0 +1,64 @@
+﻿@page
+@model MyFeedback.Api.Pages.EditExitSlipModel
+@{
+
+    
+
+    <form method="post">
+
+        <input type="hidden" asp-for="ExitSlipDto.Id" class="form-control" />
+
+    <input type="hidden" asp-for="ExitSlipDto.RowVersion" class="form-control" />
+
+        
+
+    @if (Model.ExitSlipDto.IsPublished == true)
+    {
+        @foreach (var question in Model.ExitSlipDto.QuestionList)
+        {
+            // <label asp-for="@question.QuestionNumber">Spørgsmål @question.QuestionNumber</label>
+
+                <label>Spørgsmål @question.QuestionNumber</label>
+
+                <input name="ExitSlipDto.QuestionList[@question.QuestionNumber]" value="@question.QuestionText" class="form-control" />
+
+                <input type="hidden" name="ExitSlipDto.QuestionList[@question.QuestionNumber].QuestionText" value="@question.QuestionText" />
+        }
+
+        <labal>Din exit slip ER publiceret</labal>
+    }
+    else if (Model.ExitSlipDto.IsPublished == false)
+    {
+        @foreach (var question in Model.ExitSlipDto.QuestionList)
+        {
+            <label asp-for="@question.QuestionNumber">Spørgsmål @question.QuestionNumber</label>
+
+                <input name="ExitSlipDto.QuestionList[@question.QuestionNumber]" asp-for="@question.QuestionText" class="form-control" />
+
+                <input type="hidden" name="ExitSlipDto.QuestionList[@question.QuestionNumber].QuestionText" value="@question.QuestionText" />
+        }
+
+    //   <input type="checkbox" id="publishCB" name="publishCB" />
+
+        
+
+    <div>
+    
+    @Html.CheckBoxFor(item => Model.IsChecked)
+                Publicér
+            </div>
+    }
+
+
+        
+    
+      
+
+        <button type="submit" class="btn btn-info">Gem</button>
+
+    </form>
+   
+
+        
+
+}
