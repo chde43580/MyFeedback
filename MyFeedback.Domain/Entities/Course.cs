@@ -12,7 +12,20 @@ namespace MyFeedback.Domain.Entities
         public List<Guid> StudentClassIds { get; protected set; }
         public DateTime StartDate { get; protected set; }
         public DateTime EndDate { get; protected set; }
-
         public Guid SchoolId { get; protected set; }
+
+        public Course()
+        {
+            
+        }
+
+        public Course(string name, List<Guid> studentclassIds, DateTime startDate, DateTime endDate, Guid schoolId)
+        {
+            Name = name;
+            StudentClassIds = studentclassIds;
+            StartDate = startDate;
+            EndDate = endDate;
+            SchoolId = schoolId;
+        }
     }
 }
