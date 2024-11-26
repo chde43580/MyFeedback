@@ -17,5 +17,19 @@ namespace MyFeedback.Domain.Entities
         public int DownVotes { get; protected set; }
         public int TimesReported { get; protected set; }
         public bool IsLocked { get; protected set; }
+
+        public ForumPost(string problemText, string solutionText)
+        {
+            this.ProblemText = problemText;
+            this.SolutionText = solutionText;
+        }
+
+        public static ForumPost Create(string problemText, string solutionText)
+        {
+            ForumPost newForumPost = new ForumPost(problemText, solutionText);
+
+            return newForumPost;
+        }
+
     }
 }

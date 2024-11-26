@@ -67,7 +67,7 @@ namespace MyFeedback.Api.Pages
 
             else if (User.HasClaim("IsStudent", "1"))
             {
-                return RedirectToPage("StudentExitSlipStartPage");
+                return RedirectToPage("StudentForumStartpage");
             }
             else {
                 return Page();

@@ -21,16 +21,14 @@ namespace MyFeedback.Infrastructure
         {
             services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
             services.AddScoped<IExitSlipRepo, ExitSlipRepo>();
-   //       services.AddScoped<IExitSlipClient, ExitSlipClient>();
+      //    services.AddScoped<IExitSlipClient, ExitSlipClient>();
 
-            //   services.AddScoped<IAccomodationQuery, AccomodationQuery>();
-            //   services.AddScoped<IAccomodationRepository, AccomodationRepository>();
+            services.AddScoped<IForumPostQuery, ForumPostQuery>();
+            services.AddScoped<IForumPostRepo, ForumPostRepo>();
+      //    services.AddScoped<IForumPostClient, ForumPostClient>();
 
-            //   services.AddScoped<IHostQuery, HostQuery>();
-            //   services.AddScoped<IHostRepository, HostRepository>();
+         
 
-            //    services.AddScoped<IGuestQuery, GuestQuery>();
-            //    services.AddScoped<IGuestRepository, GuestRepository>();
 
             // DATABASE CONFIGS
 

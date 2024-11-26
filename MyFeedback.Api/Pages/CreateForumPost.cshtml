@@ -1,0 +1,28 @@
+﻿@page
+@model MyFeedback.Api.Pages.CreateForumPostModel
+@{
+   <h2>Opret forum-post</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <label asp-for="ForumPostDto.ProblemText"></label>
+                <input asp-for="ForumPostDto.ProblemText" class="form-control"/>
+                <span asp-validation-for="ForumPostDto.ProblemText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ForumPostDto.SolutionText"></label>
+                <input asp-for="ForumPostDto.SolutionText" class="form-control" />
+                <span asp-validation-for="ForumPostDto.SolutionText" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-default">Opret</button>
+        </form>
+    </div>
+</div>
+
+}
