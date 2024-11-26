@@ -10,7 +10,7 @@ namespace MyFeedback.Domain.Entities
     {
         public string Name { get; protected set; }
         public List<Guid> StudentIds { get; protected set; }
-        public DateTime GraduationDate { get; protected set; }
+        public DateOnly GraduationDate { get; protected set; }
         public Guid CourseId { get; protected set; }
 
         public StudentClass()
@@ -18,7 +18,7 @@ namespace MyFeedback.Domain.Entities
             
         }
 
-        public StudentClass(string name, List<Guid> studenIds, DateTime graduationDate, Guid courseId)
+        public StudentClass(string name, List<Guid> studenIds, DateOnly graduationDate, Guid courseId)
         {
             Name = name;
             StudentIds = studenIds;

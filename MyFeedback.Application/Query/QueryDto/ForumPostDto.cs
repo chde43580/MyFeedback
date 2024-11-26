@@ -12,17 +12,17 @@ namespace MyFeedback.Application.Query.QueryDto
     {
         public Guid Id { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        //[Timestamp]
+        //public byte[] RowVersion { get; set; }
 
         public DateTime PostDate { get; set; }
 
         public List<Comment> CommentList { get; set; }
 
         public Guid CategoryId { get; set; }
-
+        [MaxLength(200)]
         public string ProblemText { get; set; }
-
+        [MaxLength(200)]
         public string SolutionText { get; set; }
 
         public int UpVotes { get; set; }

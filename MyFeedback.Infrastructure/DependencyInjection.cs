@@ -27,7 +27,11 @@ namespace MyFeedback.Infrastructure
             services.AddScoped<IForumPostRepo, ForumPostRepo>();
       //    services.AddScoped<IForumPostClient, ForumPostClient>();
 
-         
+            services.AddScoped<ICategoryQuery, CategoryQuery>();
+      //    services.AddScoped<IForumPostRepo, ForumPostRepo>();
+      //    services.AddScoped<IForumPostClient, ForumPostClient>();
+
+
 
 
             // DATABASE CONFIGS

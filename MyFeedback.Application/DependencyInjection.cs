@@ -13,7 +13,7 @@ namespace MyFeedback.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IExitSlipCommand, ExitSlipCommand>();
-
+            services.AddScoped<IForumPostCommand, ForumPostCommand>();
            
 
 

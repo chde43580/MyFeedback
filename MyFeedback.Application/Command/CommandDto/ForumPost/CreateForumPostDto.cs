@@ -10,5 +10,7 @@ namespace MyFeedback.Application.Command.CommandDto.ForumPost
     {
         public string ProblemText { get; set; }
         public string SolutionText { get; set; }
+
+        public Guid CategoryId { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace MyFeedback.Application.Query.QueryDto
         public Guid Id { get; set; }
         public string Name { get; set; }
         public List<Guid> StudentIds { get; set; }
-        public DateTime GraduationDate { get; set; }
+        public DateOnly GraduationDate { get; set; }
         public Guid CourseId { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; set; }

@@ -15,6 +15,12 @@ namespace MyFeedback.Application.Command
         private readonly IUnitOfWork _unitOfWork;
         private readonly IForumPostRepo _forumPostRepo;
 
+        public ForumPostCommand(IUnitOfWork unitOfWork, IForumPostRepo forumPostRepo)
+        {
+            this._unitOfWork = unitOfWork;
+            this._forumPostRepo = forumPostRepo;
+        }
+
         void IForumPostCommand.CreateForumPost(CreateForumPostDto createForumPostDto)
         {
             try

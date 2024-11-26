@@ -10,5 +10,11 @@ namespace MyFeedback.Domain.Entities
     {
         public string Name { get; protected set; }
         public string Address { get; protected set; }
+
+        public School(string name, string address)
+        {
+            this.Name = name;
+            this.Address = address;
+        }
     }
 }

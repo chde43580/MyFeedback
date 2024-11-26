@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyFeedback.Application.Command;
 using MyFeedback.Application.Command.CommandDto.ForumPost;
+using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
 
 namespace MyFeedback.Api.Pages
@@ -10,17 +11,24 @@ namespace MyFeedback.Api.Pages
     {
         private readonly IForumPostCommand _forumPostCommand;
 
-        public CreateForumPostModel(IForumPostCommand forumPostCommand)
+        private readonly ICategoryQuery _categoryQuery;
+
+        public CreateForumPostModel(IForumPostCommand forumPostCommand, ICategoryQuery categoryQuery)
         {
             this._forumPostCommand = forumPostCommand;
+
+            this._categoryQuery = categoryQuery;
         }
 
         [BindProperty]
         public ForumPostDto ForumPostDto { get; set; }
 
+        [BindProperty]
+        public IEnumerable<CategoryDto> CategoryDtoList { get; set; }
+
         public void OnGet()
         {
-            
+            CategoryDtoList = _categoryQuery.GetAll();
         }
 
         public IActionResult OnPost()
@@ -32,16 +40,18 @@ namespace MyFeedback.Api.Pages
 
             else
             {
+
                 CreateForumPostDto createForumPostDto = new CreateForumPostDto
                 {
                     ProblemText = ForumPostDto.ProblemText,
                     SolutionText = ForumPostDto.SolutionText,
+                    CategoryId = Guid.Parse(Request.Form["Category"])
                 };
                    
 
                 _forumPostCommand.CreateForumPost(createForumPostDto);
 
-                return Redirect(Request.Headers["Referer"].ToString());
+                return RedirectToPage("StudentForumStartpage"); // Kunne man måske bruge CategoryId ovenfor til sende til rette forum-underside?
             }
         }
     }
