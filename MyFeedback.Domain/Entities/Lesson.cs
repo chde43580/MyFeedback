@@ -10,5 +10,14 @@ namespace MyFeedback.Domain.Entities
     {
         public DateTime StartDate { get; protected set; }
         public Guid CourseId { get; protected set; }
+
+        public Lesson() { }
+
+        public Lesson(DateTime startDate, Guid courseId)
+        {
+            StartDate = startDate;
+            CourseId = courseId;
+        }
+
     }
 }
