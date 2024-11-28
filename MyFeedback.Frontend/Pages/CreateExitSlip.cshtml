@@ -1,0 +1,70 @@
+﻿@page
+@model MyFeedback.Frontend.Pages.ExitSlipModel
+@{
+
+    <button onclick="AddQuestion()" class="btn btn-dark">Tilføj nyt spørgsmål</button>
+
+
+    @functions
+    {
+        public async Task AddQuestionsMethod()
+        {
+            if (Model.createExitSlipRequestDto.QuestionList.Count() < 5)
+            {
+
+
+                int questionNumberForNewQuestion = Model.createExitSlipRequestDto.QuestionList.Count() + 1;
+
+                <div>
+                    <label>Spørgsmål @questionNumberForNewQuestion</label>
+                </div>
+
+                <div>
+                    <input asp-for="createExitSlipRequestDto.QuestionList[Model.createExitSlipRequestDto.QuestionList.Count()].QuestionText" rows="4" cols="50" placeholder="Skriv dit spørgsmål her..."></input>
+                    
+                    </div>
+
+                <br />
+            }
+            else
+            {
+                <label>Du kan ikke tilføje flere spørgsmål; du har allerede 5</label>
+            }
+        }
+    }
+
+
+
+    @section Scripts
+    {
+        <script>
+            function AddQuestion() {
+                $("button").html('@AddQuestionsMethod()');
+            }
+
+        </script>
+    }
+
+    <form method="post">
+
+        <div>
+            <label>Spørgsmål 1</label>
+        </div>
+
+        <div>
+            <input asp-for="createExitSlipRequestDto.QuestionList[0].QuestionText" rows="4" cols="50" placeholder="Skriv dit spørgsmål her..."></input>
+        </div>
+
+        <br />
+
+        
+
+        <br />
+        <br />
+
+        <a type="submit" class="btn btn-info">Gem hele exit slip</a>
+       
+    </form>
+
+
+}

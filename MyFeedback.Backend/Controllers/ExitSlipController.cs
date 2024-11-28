@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using MyFeedback.Application.Command;
+using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
 using Shared;
@@ -14,18 +15,24 @@ namespace MyFeedback.Backend.Controllers
     {
      
         private readonly IExitSlipQuery _exitSlipQuery;
+
+        private readonly IExitSlipCommand _exitSlipCommand;
  
 
-        public ExitSlipController(IExitSlipQuery exitSlipQuery)
+        public ExitSlipController(IExitSlipQuery exitSlipQuery, IExitSlipCommand exitSlipCommand)
         {
             _exitSlipQuery = exitSlipQuery;
+
+            _exitSlipCommand = exitSlipCommand;
         }
 
         // GET ALL: <ExitSlipController>
         [HttpGet]
-        public IEnumerable<string> GetAll()
+        public IEnumerable<ExitSlipQueryDto> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<ExitSlipQueryDto> exitSlipQueryDtos = _exitSlipQuery.GetAll();
+
+            return exitSlipQueryDtos;
         }
 
         // GET <ExitSlipController>/aiojwdioja92929-92j92-29dj9j-2929ks    EKSEMPEL PÅ ET ID GUID
@@ -35,7 +42,7 @@ namespace MyFeedback.Backend.Controllers
         {
 
 
-            var queryResult = _exitSlipQuery.Get(id); // TODO: Spørg Kaj om dette lag godt må kende Application-laget (så det kan få fat i Query, etc.) (LevSundt gør det)
+            ExitSlipQueryDto queryResult = _exitSlipQuery.Get(id);
 
             return queryResult;
            
@@ -57,8 +64,13 @@ namespace MyFeedback.Backend.Controllers
 
         // DELETE <ExitSlipController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            var queryDto = _exitSlipQuery.Get(id);
+
+           DeleteExitSlipDto deleteCommandDto = new DeleteExitSlipDto { Id = queryDto.Id, RowVersion = queryDto.RowVersion };
+
+            _exitSlipCommand.DeleteExitSlip(deleteCommandDto);
         }
     }
 }

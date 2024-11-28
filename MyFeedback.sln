@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Test", "MyFeedback.Test\MyFeedback.Test.csproj", "{A90026F9-EFD6-4095-90D1-46D4DC789522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Api", "MyFeedback.Api\MyFeedback.Api.csproj", "{6DCFB465-D3EB-4DB9-A0CE-4661EB4391C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Frontend", "MyFeedback.Frontend\MyFeedback.Frontend.csproj", "{6DCFB465-D3EB-4DB9-A0CE-4661EB4391C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.DatabaseMigration", "MyFeedback.DatabaseMigration\MyFeedback.DatabaseMigration.csproj", "{8B624C89-20E3-46D1-AE1D-BFB9EF25989D}"
 EndProject

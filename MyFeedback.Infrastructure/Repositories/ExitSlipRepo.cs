@@ -1,4 +1,5 @@
-﻿using MyFeedback.Application.Command.CommandDto.ExitSlip;
+﻿using Microsoft.EntityFrameworkCore;
+using MyFeedback.Application.Command.CommandDto.ExitSlip;
 using MyFeedback.Application.Repositories;
 using MyFeedback.Domain.Entities;
 using System;
@@ -28,6 +29,9 @@ namespace MyFeedback.Infrastructure.Repositories
         void IExitSlipRepo.DeleteExitSlip(ExitSlip exitSlip, byte[] rowVersion)
         {
             _dbContext.Entry(exitSlip).Property(nameof(exitSlip.RowVersion)).OriginalValue = rowVersion;
+
+            exitSlip = _dbContext.ExitSlips.Include(e => e.QuestionList).FirstOrDefault(e => e.Id == exitSlip.Id);
+               
 
             _dbContext.ExitSlips.Remove(exitSlip);
 

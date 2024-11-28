@@ -30,6 +30,13 @@ namespace MyFeedback.Infrastructure
         public DbSet<School> Schools { get; set; }
         public DbSet<StudentClass> StudentClasses { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+
+            base.OnModelCreating(builder);
+
+            builder.Entity<ExitSlip>().HasMany(p => p.QuestionList).WithOne().HasForeignKey("ExitSlipId").OnDelete(DeleteBehavior.Cascade);
+        }
 
     }
 }

@@ -10,8 +10,10 @@ namespace Shared
     {
         public Guid LessonId { get; set; }
 
-        public List<CreateQuestionRequestDto> QuestionList { get; set; } = null!;
+        public List<CreateQuestionRequestDto> QuestionList { get; set; } // = null!;
 
         public bool IsPublished { get; set; }
     }
+
+   
 }
