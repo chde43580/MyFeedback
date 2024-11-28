@@ -5,6 +5,9 @@ using MyFeedback.Api.Data;
 using MyFeedback.Infrastructure;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using MyFeedback.Application;
+using MyFeedback.Api.TypedClients.Interfaces;
+using MyFeedback.Api.TypedClients.Implementations;
+
 
 // Database-migrationer kommandoer:
 
@@ -23,11 +26,13 @@ policyBuilder => policyBuilder
 policyBuilder => policyBuilder
     .RequireAuthenticatedUser());
 
-// Add services to the container.
-
+// Tilføjer vores to separate Dependency Injection-klasser fra Application-, Infrastructure-lagene
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration); // TODO: Kan vi undgå at Razor Page-projektet kender til Infrastructure - siden vi persisterer vores identity-data i vores ENE sql-database (ie. vi skal bruge infr-referencen til Identity..)
 
+// IHTTPClientFactory
+builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
 
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

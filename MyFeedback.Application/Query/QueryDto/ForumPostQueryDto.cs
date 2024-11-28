@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyFeedback.Application.Query.QueryDto
 {
-    public record ForumPostDto
+    public record ForumPostQueryDto
     {
         public Guid Id { get; set; }
 

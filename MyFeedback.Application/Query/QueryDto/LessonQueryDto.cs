@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyFeedback.Application.Query.QueryDto
 {
-    public record LessonDto
+    public record LessonQueryDto
     {
         public Guid Id { get; set; }
         public DateTime StartDate { get; set; }

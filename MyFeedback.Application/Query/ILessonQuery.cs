@@ -9,8 +9,8 @@ namespace MyFeedback.Application.Query
 {
     public interface ILessonQuery
     {
-        IEnumerable<LessonDto> GetAll();
+        IEnumerable<LessonQueryDto> GetAll();
 
-        LessonDto Get(Guid? id);
+        LessonQueryDto Get(Guid? id);
     }
 }

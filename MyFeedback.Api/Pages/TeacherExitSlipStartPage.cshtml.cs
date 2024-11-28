@@ -12,7 +12,7 @@ namespace MyFeedback.Api.Pages
     {
         private readonly IExitSlipQuery _exitSlipQuery;
 
-        public IEnumerable<ExitSlipDto> ExitSlipDtoList { get; set; }
+        public IEnumerable<ExitSlipQueryDto> ExitSlipDtoList { get; set; }
 
         public TeacherExitSlipStartPageModel(IExitSlipQuery exitSlipQuery)
         {

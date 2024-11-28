@@ -10,8 +10,8 @@ namespace MyFeedback.Application.Query
 {
     public interface ICategoryQuery
     {
-        IEnumerable<CategoryDto> GetAll();
+        IEnumerable<CategoryQueryDto> GetAll();
 
-        CategoryDto Get(Guid id);
+        CategoryQueryDto Get(Guid id);
     }
 }

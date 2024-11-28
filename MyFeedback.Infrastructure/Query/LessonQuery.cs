@@ -19,11 +19,11 @@ namespace MyFeedback.Infrastructure.Query
             _dbContext = dbContext;
         }
 
-        LessonDto ILessonQuery.Get(Guid? id)
+        LessonQueryDto ILessonQuery.Get(Guid? id)
         {
             Lesson domainLesson = _dbContext.Lessons.AsNoTracking().Single(e => e.Id == id);
 
-            LessonDto dtoReturn = new LessonDto
+            LessonQueryDto dtoReturn = new LessonQueryDto
             {
                 Id = domainLesson.Id,
                 StartDate = domainLesson.StartDate,
@@ -34,9 +34,9 @@ namespace MyFeedback.Infrastructure.Query
             return dtoReturn;
         }
 
-        IEnumerable<LessonDto> ILessonQuery.GetAll()
+        IEnumerable<LessonQueryDto> ILessonQuery.GetAll()
         {
-            var listOfDtos = _dbContext.Lessons.AsNoTracking().Select(e => new LessonDto
+            var listOfDtos = _dbContext.Lessons.AsNoTracking().Select(e => new LessonQueryDto
             {
                 Id = e.Id,
                 StartDate = e.StartDate,

@@ -20,10 +20,10 @@ namespace MyFeedback.Infrastructure.Query
             this._dbContext = dbContext;
         }
 
-        IEnumerable<ExitSlipDto> IExitSlipQuery.GetAll()
+        IEnumerable<ExitSlipQueryDto> IExitSlipQuery.GetAll()
         {
          
-            var listOfDtos = _dbContext.ExitSlips.AsNoTracking().Select(e => new ExitSlipDto
+            var listOfDtos = _dbContext.ExitSlips.AsNoTracking().Select(e => new ExitSlipQueryDto
             {
                 Id = e.Id,
                 LessonId = e.LessonId,
@@ -37,13 +37,13 @@ namespace MyFeedback.Infrastructure.Query
             return listOfDtos;
         }
 
-        ExitSlipDto IExitSlipQuery.Get(Guid? id)
+        ExitSlipQueryDto IExitSlipQuery.Get(Guid? id)
         {
             ExitSlip domainExitSlip = _dbContext.ExitSlips.AsNoTracking().Include(e => e.QuestionList).Single(e => e.Id == id);
 
 
 
-            ExitSlipDto dtoToReturn = new ExitSlipDto
+            ExitSlipQueryDto dtoToReturn = new ExitSlipQueryDto
             {
                 Id = domainExitSlip.Id,
                 LessonId = domainExitSlip.LessonId,

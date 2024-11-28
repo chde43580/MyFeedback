@@ -16,10 +16,5 @@ namespace MyFeedback.Application.Command.CommandDto.ExitSlip
 
         public bool IsPublished { get; set; }
 
-        //public CreateExitSlipDto(Guid lessonId, List<Question> questionList)
-        //{
-        //    this.LessonId = lessonId;
-        //    this.QuestionList = questionList;
-        //}
     }
 }

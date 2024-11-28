@@ -9,8 +9,8 @@ namespace MyFeedback.Application.Query
 {
     public interface IForumPostQuery
     {
-        IEnumerable<ForumPostDto> GetAll();
+        IEnumerable<ForumPostQueryDto> GetAll();
 
-        ForumPostDto Get(Guid? id);
+        ForumPostQueryDto Get(Guid? id);
     }
 }

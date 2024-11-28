@@ -21,15 +21,15 @@ namespace MyFeedback.Infrastructure
         {
             services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
             services.AddScoped<IExitSlipRepo, ExitSlipRepo>();
-      //    services.AddScoped<IExitSlipClient, ExitSlipClient>();
+      
 
             services.AddScoped<IForumPostQuery, ForumPostQuery>();
             services.AddScoped<IForumPostRepo, ForumPostRepo>();
-      //    services.AddScoped<IForumPostClient, ForumPostClient>();
+    
 
             services.AddScoped<ICategoryQuery, CategoryQuery>();
-      //    services.AddScoped<IForumPostRepo, ForumPostRepo>();
-      //    services.AddScoped<IForumPostClient, ForumPostClient>();
+      //    services.AddScoped<ICategoryRepo, CategoryRepo>();
+
 
 
 

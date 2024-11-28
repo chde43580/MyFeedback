@@ -19,11 +19,11 @@ namespace MyFeedback.Infrastructure.Query
             _dbContext = dbContext;
         }
 
-        CourseDto ICourseQuery.Get(Guid? id)
+        CourseQueryDto ICourseQuery.Get(Guid? id)
         {
             Course domainCourse = _dbContext.Courses.AsNoTracking().Include(e => e.StudentClassIds).Single(e => e.Id == id);
 
-            CourseDto dtoReturn = new CourseDto()
+            CourseQueryDto dtoReturn = new CourseQueryDto()
             {
                 Id = domainCourse.Id,
                 Name = domainCourse.Name,
@@ -37,9 +37,9 @@ namespace MyFeedback.Infrastructure.Query
             return dtoReturn;
         }
 
-        IEnumerable<CourseDto> ICourseQuery.GetAll()
+        IEnumerable<CourseQueryDto> ICourseQuery.GetAll()
         {
-            var listOfDtos = _dbContext.Courses.AsNoTracking().Select(e => new CourseDto
+            var listOfDtos = _dbContext.Courses.AsNoTracking().Select(e => new CourseQueryDto
             {
                 Id = e.Id,
                 Name = e.Name,

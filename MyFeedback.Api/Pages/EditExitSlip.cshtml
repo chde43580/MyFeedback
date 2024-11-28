@@ -2,63 +2,42 @@
 @model MyFeedback.Api.Pages.EditExitSlipModel
 @{
 
-    
-
-    <form method="post">
-
-        <input type="hidden" asp-for="ExitSlipDto.Id" class="form-control" />
-
-    <input type="hidden" asp-for="ExitSlipDto.RowVersion" class="form-control" />
-
+    <h2>Redigér exit slip</h2>
         
+    <div class="row">
+        <div class="col-md-6">
 
-    @if (Model.ExitSlipDto.IsPublished == true)
-    {
-        @foreach (var question in Model.ExitSlipDto.QuestionList)
-        {
-            // <label asp-for="@question.QuestionNumber">Spørgsmål @question.QuestionNumber</label>
+             <form method="post">
 
-                <label>Spørgsmål @question.QuestionNumber</label>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                <input name="ExitSlipDto.QuestionList[@question.QuestionNumber]" value="@question.QuestionText" class="form-control" />
+                <input type="hidden" asp-for="ExitSlipViewModel.Id" class="form-control" />
+                <input type="hidden" asp-for="ExitSlipViewModel.RowVersion" class="form-control" />
+            <!--    <input type="hidden" asp-for="ExitSlipViewModel.QuestionList" class="form-control" /> -->
+                <input type="hidden" asp-for="ExitSlipViewModel.LessonId" class="form-control" />
+                <input type="hidden" asp-for="ExitSlipViewModel.IsPublished" class="form-control" />
 
-                <input type="hidden" name="ExitSlipDto.QuestionList[@question.QuestionNumber].QuestionText" value="@question.QuestionText" />
-        }
+                @foreach (var createQuestionRequestDto in Model.ExitSlipViewModel.QuestionList)
+             {
 
-        <labal>Din exit slip ER publiceret</labal>
-    }
-    else if (Model.ExitSlipDto.IsPublished == false)
-    {
-        @foreach (var question in Model.ExitSlipDto.QuestionList)
-        {
-            <label asp-for="@question.QuestionNumber">Spørgsmål @question.QuestionNumber</label>
+                <div class="form-group">
+                
+                  
 
-                <input name="ExitSlipDto.QuestionList[@question.QuestionNumber]" asp-for="@question.QuestionText" class="form-control" />
+                    <label asp-for="@createQuestionRequestDto.QuestionNumber"></label>
+                    <input name="@createQuestionRequestDto.QuestionNumber" asp-for="@createQuestionRequestDto.QuestionText" />
+                    <span asp-validation-for="@createQuestionRequestDto.QuestionText"></span>
 
-                <input type="hidden" name="ExitSlipDto.QuestionList[@question.QuestionNumber].QuestionText" value="@question.QuestionText" />
-        }
+                </div>
 
-    //   <input type="checkbox" id="publishCB" name="publishCB" />
+             }
 
-        
-
-    <div>
-    
-    @Html.CheckBoxFor(item => Model.IsChecked)
-                Publicér
-            </div>
-    }
+             <button type="submit" class="btn btn-default">Gem</button>
 
 
-        
-    
-      
-
-        <button type="submit" class="btn btn-info">Gem</button>
-
-    </form>
-   
-
+             </form>
+        </div>
+    </div>
         
 
 }

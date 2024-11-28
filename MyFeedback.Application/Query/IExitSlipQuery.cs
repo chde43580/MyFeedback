@@ -10,8 +10,8 @@ namespace MyFeedback.Application.Query
 {
     public interface IExitSlipQuery
     {
-        IEnumerable<ExitSlipDto> GetAll();
+        IEnumerable<ExitSlipQueryDto> GetAll();
 
-        ExitSlipDto Get(Guid? id);
+        ExitSlipQueryDto Get(Guid? id);
     }
 }

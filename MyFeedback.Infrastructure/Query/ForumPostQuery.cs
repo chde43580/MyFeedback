@@ -19,11 +19,11 @@ namespace MyFeedback.Infrastructure.Query
             this._dbContext = dbContext;
         }
 
-        ForumPostDto IForumPostQuery.Get(Guid? id)
+        ForumPostQueryDto IForumPostQuery.Get(Guid? id)
         {
             ForumPost domainForumPost = _dbContext.ForumPosts.AsNoTracking().Include(f => f.Comments).Single(f => f.Id == id);
 
-            ForumPostDto dtoToReturn = new ForumPostDto
+            ForumPostQueryDto dtoToReturn = new ForumPostQueryDto
             {
                 Id = domainForumPost.Id,
                 PostDate = domainForumPost.PostDate,
@@ -40,9 +40,9 @@ namespace MyFeedback.Infrastructure.Query
 
         }
 
-        IEnumerable<ForumPostDto> IForumPostQuery.GetAll()
+        IEnumerable<ForumPostQueryDto> IForumPostQuery.GetAll()
         {
-            IEnumerable<ForumPostDto> listOfDtos = _dbContext.ForumPosts.AsNoTracking().Select(f => new ForumPostDto
+            IEnumerable<ForumPostQueryDto> listOfDtos = _dbContext.ForumPosts.AsNoTracking().Select(f => new ForumPostQueryDto
             {
                 Id = f.Id,
                 PostDate = f.PostDate,

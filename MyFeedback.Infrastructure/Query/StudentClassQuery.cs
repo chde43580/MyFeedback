@@ -19,10 +19,10 @@ namespace MyFeedback.Infrastructure.Query
             this._dbContext = dbContext;
         }
 
-        IEnumerable<StudentClassDto> IStudentClassQuery.GetAll()
+        IEnumerable<StudentClassQueryDto> IStudentClassQuery.GetAll()
         {
 
-            var listOfDtos = _dbContext.StudentClasses.AsNoTracking().Select(e => new StudentClassDto
+            var listOfDtos = _dbContext.StudentClasses.AsNoTracking().Select(e => new StudentClassQueryDto
             {
                 Id = e.Id,
                 Name = e.Name,
@@ -35,11 +35,11 @@ namespace MyFeedback.Infrastructure.Query
             return listOfDtos;
         }
 
-        StudentClassDto IStudentClassQuery.Get(Guid? id)
+        StudentClassQueryDto IStudentClassQuery.Get(Guid? id)
         {
             StudentClass domainStudentClass = _dbContext.StudentClasses.AsNoTracking().Include(e => e.StudentIds).Single(e => e.Id == id);
 
-            StudentClassDto dtoToReturn = new StudentClassDto
+            StudentClassQueryDto dtoToReturn = new StudentClassQueryDto
             {
                 Id = domainStudentClass.Id,
                 Name = domainStudentClass.Name,

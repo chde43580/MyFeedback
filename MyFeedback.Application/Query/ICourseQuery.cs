@@ -9,8 +9,8 @@ namespace MyFeedback.Application.Query
 {
     public interface ICourseQuery
     {
-        IEnumerable<CourseDto> GetAll();
+        IEnumerable<CourseQueryDto> GetAll();
 
-        CourseDto Get(Guid? id);
+        CourseQueryDto Get(Guid? id);
     }
 }

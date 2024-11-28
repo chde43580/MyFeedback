@@ -2,59 +2,60 @@
 
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
-using MyFeedback.Domain.Entities;
-using MyFeedback.Backend.TypedClients.Implementations;
+using Shared;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyFeedback.Backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ExitSlipController : ControllerBase
     {
+     
         private readonly IExitSlipQuery _exitSlipQuery;
-
-        private readonly ExitSlipClient _exitSlipClient;
+ 
 
         public ExitSlipController(IExitSlipQuery exitSlipQuery)
         {
-            this._exitSlipQuery = exitSlipQuery;
+            _exitSlipQuery = exitSlipQuery;
         }
 
-        // GET: api/<ExitSlipController>
+        // GET ALL: <ExitSlipController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> GetAll()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<ExitSlipController>/5
+        // GET <ExitSlipController>/aiojwdioja92929-92j92-29dj9j-2929ks    EKSEMPEL PÅ ET ID GUID
 
         [HttpGet("{id}")]
-        public ExitSlipDto Get(Guid id)
+        public ExitSlipQueryDto Get(Guid id)
         {
 
 
-            var queryResult = _exitSlipQuery.Get(id);
+            var queryResult = _exitSlipQuery.Get(id); // TODO: Spørg Kaj om dette lag godt må kende Application-laget (så det kan få fat i Query, etc.) (LevSundt gør det)
 
             return queryResult;
            
         }
 
-        // POST api/<ExitSlipController>
+        // POST <ExitSlipController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<ExitSlipController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT <ExitSlipController>
+        [HttpPut]
+        public void UpdateExitSlip(UpdateExitSlipRequestDto dto)
         {
+
         }
 
-        // DELETE api/<ExitSlipController>/5
+
+        // DELETE <ExitSlipController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

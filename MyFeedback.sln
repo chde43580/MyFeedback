@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.DatabaseMigratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Backend", "MyFeedback.Backend\MyFeedback.Backend.csproj", "{ED9C7293-EC42-42EA-9B97-CD60314B001C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{BEC1895F-ED5C-4E8D-B08B-4DFE6826A502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{ED9C7293-EC42-42EA-9B97-CD60314B001C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9C7293-EC42-42EA-9B97-CD60314B001C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9C7293-EC42-42EA-9B97-CD60314B001C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC1895F-ED5C-4E8D-B08B-4DFE6826A502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC1895F-ED5C-4E8D-B08B-4DFE6826A502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC1895F-ED5C-4E8D-B08B-4DFE6826A502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC1895F-ED5C-4E8D-B08B-4DFE6826A502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

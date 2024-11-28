@@ -19,11 +19,11 @@ namespace MyFeedback.Infrastructure.Query
             _dbContext = dbContext;
         }
 
-        CategoryDto ICategoryQuery.Get(Guid id)
+        CategoryQueryDto ICategoryQuery.Get(Guid id)
         {
             Category domainCategory = _dbContext.Categories.AsNoTracking().Single(e => e.Id == id);
 
-            CategoryDto dtoToReturn = new CategoryDto
+            CategoryQueryDto dtoToReturn = new CategoryQueryDto
             {
                 Id = domainCategory.Id,
                 Name = domainCategory.Name,
@@ -33,9 +33,9 @@ namespace MyFeedback.Infrastructure.Query
             return dtoToReturn;
         }
 
-        IEnumerable<CategoryDto> ICategoryQuery.GetAll()
+        IEnumerable<CategoryQueryDto> ICategoryQuery.GetAll()
         {
-            var listOfDtos = _dbContext.Categories.AsNoTracking().Select(e => new CategoryDto()
+            var listOfDtos = _dbContext.Categories.AsNoTracking().Select(e => new CategoryQueryDto()
             {
                 Id = e.Id,
                 Name = e.Name,

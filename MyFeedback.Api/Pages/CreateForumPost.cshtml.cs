@@ -21,10 +21,10 @@ namespace MyFeedback.Api.Pages
         }
 
         [BindProperty]
-        public ForumPostDto ForumPostDto { get; set; }
+        public ForumPostQueryDto ForumPostDto { get; set; }
 
         [BindProperty]
-        public IEnumerable<CategoryDto> CategoryDtoList { get; set; }
+        public IEnumerable<CategoryQueryDto> CategoryDtoList { get; set; }
 
         public void OnGet()
         {

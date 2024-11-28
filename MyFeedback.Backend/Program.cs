@@ -3,8 +3,7 @@ using MyFeedback.Application;
 using MyFeedback.Application.Query;
 using MyFeedback.Infrastructure.Query;
 using MyFeedback.Backend.Controllers;
-using MyFeedback.Backend.TypedClients.Interfaces;
-using MyFeedback.Backend.TypedClients.Implementations;
+using MyFeedback.Backend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,13 +15,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Tilføjer vores to separate Dependency Injection-klasser fra Application-, hhv. Infrastructure-lagene
+// Tilføjer vores to separate Dependency Injection-klasser fra Application-, Infrastructure-lagene
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// IHTTPClientFactory
-//builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
-//    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
 
 var app = builder.Build();
 
