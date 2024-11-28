@@ -28,47 +28,34 @@ namespace MyFeedback.Frontend.Pages
 
         public void OnGet()
         {
-         createExitSlipRequestDto = new CreateExitSlipRequestDto { QuestionList = new List<CreateQuestionRequestDto>()};
+            if (createExitSlipRequestDto == null)
+            {
+                createExitSlipRequestDto = new CreateExitSlipRequestDto();
 
-            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto { QuestionNumber = 1, QuestionText = "" });
-            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto { QuestionNumber = 2, QuestionText = "" });
-            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto { QuestionNumber = 3, QuestionText = "" });
-            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto { QuestionNumber = 4, QuestionText = "" });
-            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto { QuestionNumber = 5, QuestionText = "" });
+                createExitSlipRequestDto.QuestionList = new List<CreateQuestionRequestDto>();
+
+                createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto() {QuestionNumber = 1, QuestionText = ""});
+            }
         }
 
-        public void OnPost()
+        public IActionResult OnPostCreateExitSlip()
         {
-            CreateExitSlipRequestDto createExitSlipRequestDto = new CreateExitSlipRequestDto();
 
-            createExitSlipRequestDto.QuestionList = new List<CreateQuestionRequestDto>();
+        //    createExitSlipRequestDto.LessonId = new Guid(); // NEEDS TO BE THE ACTUAL LESSON ID LATER ON
 
-            for (int i = 1; i < 6; i++)
-            {
-
-
-                if (Request.Form[$"question{i}Text"] == "")
-                {
-                    // Does nothing
-                }
-                else
-                {
-                    CreateQuestionRequestDto questionDto = new CreateQuestionRequestDto();
-
-                    questionDto.QuestionText = Request.Form[$"question{i}Text"];
-                    questionDto.QuestionNumber = i;
-                    createExitSlipRequestDto.QuestionList.Add(questionDto);
-                }
-            }
-
-            createExitSlipRequestDto.LessonId = new Guid(); // NEEDS TO BE THE ACTUAL LESSON ID LATER ON
-
-            //  _exitSlipRepo.AddExitSlipDto(createExitSlipDto);
+          
 
             _exitSlipClient.CreateExitSlip(createExitSlipRequestDto);
 
-            //   return RedirectToPage?
+            return RedirectToPage("TeacherExitSlipStartPage");
 
+        }
+
+        public IActionResult OnPostAddQuestion()
+        {
+            createExitSlipRequestDto.QuestionList.Add(new CreateQuestionRequestDto());
+
+            return Page();
         }
     }
 }
