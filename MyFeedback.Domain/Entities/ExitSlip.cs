@@ -24,8 +24,6 @@ namespace MyFeedback.Domain.Entities
             this.IsPublished = isPublished;
         }
 
-        
-
         public static ExitSlip Create(Guid lessonId, List<Question> questionList, bool isPublished)
         {
             ExitSlip newExitSlip = new ExitSlip(lessonId, questionList, isPublished);

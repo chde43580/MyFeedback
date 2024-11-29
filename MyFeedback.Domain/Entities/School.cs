@@ -16,5 +16,10 @@ namespace MyFeedback.Domain.Entities
             this.Name = name;
             this.Address = address;
         }
+
+        public School()
+        {
+            
+        }
     }
 }

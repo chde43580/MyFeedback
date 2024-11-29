@@ -10,7 +10,7 @@ namespace MyFeedback.Domain.Entities
     {
         public Guid QuestionId { get; protected set; }
         public Guid IdentityUserId { get; protected set; }
-        public string AnswerText { get; protected set; }
+        public string AnswerText { get; set; }
 
         //Nul-constructor
         //public Answer()
@@ -25,7 +25,7 @@ namespace MyFeedback.Domain.Entities
             this.AnswerText = answerText;
         }
 
-        public Answer Create(Guid questionId, Guid identityUserId, string answerText)
+        public static Answer Create(Guid questionId, Guid identityUserId, string answerText)
         {
             Answer newAnswer = new Answer(questionId, identityUserId, answerText);
 

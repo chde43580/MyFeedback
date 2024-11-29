@@ -30,8 +30,16 @@ namespace MyFeedback.Infrastructure
             services.AddScoped<ICategoryQuery, CategoryQuery>();
       //    services.AddScoped<ICategoryRepo, CategoryRepo>();
 
+            services.AddScoped<ICommentQuery, CommentQuery>();
+            services.AddScoped<ICommentRepo, CommentRepo>();
 
+            services.AddScoped<IAnswerQuery, AnswerQuery>();
+            services.AddScoped<IAnswerRepo, AnswerRepo>();
 
+            services.AddScoped<IPastCommentQuery, PastCommentQuery>();
+            services.AddScoped<IPastCommentRepo, PastCommentRepo>();
+
+            services.AddScoped<ISchoolQuery, SchoolQuery>();
 
 
             // DATABASE CONFIGS

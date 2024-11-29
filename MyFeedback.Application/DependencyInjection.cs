@@ -14,9 +14,10 @@ namespace MyFeedback.Application
         {
             services.AddScoped<IExitSlipCommand, ExitSlipCommand>();
             services.AddScoped<IForumPostCommand, ForumPostCommand>();
-           
-
-
+            services.AddScoped<ICommentCommand, CommentCommand>();
+            services.AddScoped<IAnswerCommand, AnswerCommand>();
+            services.AddScoped<IPastCommentCommand, PastCommentCommand>();
+          
             return services;
         }
     }
