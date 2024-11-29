@@ -28,7 +28,7 @@ namespace MyFeedback.Frontend.TypedClients.Implementations
             return await _client.GetFromJsonAsync<List<ExitSlipResultDto>>("/ExitSlip");
         }
 
-        async Task<ExitSlipResultDto> IExitSlipClient.GetExitSlip(Guid? id) // TODO: Må vi godt bruge vores queryDto her? Eller er det bedre at oprette en resultDto og lægge dén i Shared-class librariet?
+        async Task<ExitSlipResultDto> IExitSlipClient.GetExitSlip(Guid? id) 
         {
             return await _client.GetFromJsonAsync<ExitSlipResultDto>($"/ExitSlip/{id}");
 

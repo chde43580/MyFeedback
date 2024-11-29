@@ -13,7 +13,7 @@ namespace Shared
 
         public Guid LessonId { get; set; }
 
-        public List<CreateQuestionRequestDto> QuestionList { get; set; } // TODO: Skal vi senere uddifferentiere til en anden slags QuestionDto end som her (requestdto)
+        public List<CreateQuestionRequestDto> QuestionList { get; set; } 
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
