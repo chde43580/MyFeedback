@@ -37,6 +37,9 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHttpClient<IExitSlipClient, ExitSlipClient>(client =>
     client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
 
+builder.Services.AddHttpClient<ILessonClient, LessonClient>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["MyFeedbackBaseUrl"]));
+
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

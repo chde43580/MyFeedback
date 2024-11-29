@@ -19,16 +19,22 @@ namespace MyFeedback.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+           
+
             services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
             services.AddScoped<IExitSlipRepo, ExitSlipRepo>();
       
 
             services.AddScoped<IForumPostQuery, ForumPostQuery>();
             services.AddScoped<IForumPostRepo, ForumPostRepo>();
-    
+
+            // Nogle vil kun have Query's, fordi man aldrig skal command'e dem (og derfor have repos)
 
             services.AddScoped<ICategoryQuery, CategoryQuery>();
-      //    services.AddScoped<ICategoryRepo, CategoryRepo>();
+     
+
+            services.AddScoped<ILessonQuery, LessonQuery>();
+
 
             services.AddScoped<ICommentQuery, CommentQuery>();
             services.AddScoped<ICommentRepo, CommentRepo>();

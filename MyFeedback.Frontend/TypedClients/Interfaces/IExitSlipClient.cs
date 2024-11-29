@@ -11,7 +11,7 @@ namespace MyFeedback.Frontend.TypedClients.Interfaces
 
         public Task<List<ExitSlipResultDto>> GetAllExitSlips();
 
-        public Task<string> CreateExitSlip(CreateExitSlipRequestDto createExitSlipRequestDto);
+        public Task CreateExitSlip(CreateExitSlipRequestDto createExitSlipRequestDto);
 
         public Task<string> UpdateExitSlip(ExitSlipViewModel exitSlipDto);
 

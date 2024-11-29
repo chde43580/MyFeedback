@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyFeedback.Application.Command;
 using MyFeedback.Application.Command.CommandDto.ExitSlip;
+using MyFeedback.Application.Command.CommandDto.Question;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
 using Shared;
@@ -50,8 +51,17 @@ namespace MyFeedback.Backend.Controllers
 
         // POST <ExitSlipController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(CreateExitSlipRequestDto createExitSlipRequestDto)
         {
+            CreateExitSlipDto createExitSlipDto = new CreateExitSlipDto()
+                { QuestionList = new List<CreateQuestionDto>(), IsPublished = createExitSlipRequestDto.IsPublished, LessonId = createExitSlipRequestDto.LessonId};
+
+            foreach (var question in createExitSlipRequestDto.QuestionList)
+            {
+                createExitSlipDto.QuestionList.Add(new CreateQuestionDto { QuestionNumber = question.QuestionNumber, QuestionText = question.QuestionText });
+            }
+
+            _exitSlipCommand.CreateExitSlip(createExitSlipDto);
         }
 
         // PUT <ExitSlipController>

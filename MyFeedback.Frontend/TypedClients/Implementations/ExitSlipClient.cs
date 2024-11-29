@@ -13,9 +13,9 @@ namespace MyFeedback.Frontend.TypedClients.Implementations
             _client = client;
         }
 
-        Task<string> IExitSlipClient.CreateExitSlip(CreateExitSlipRequestDto createExitSlipRequestDto)
+        async Task IExitSlipClient.CreateExitSlip(CreateExitSlipRequestDto createExitSlipRequestDto)
         {
-            throw new NotImplementedException();
+            await _client.PostAsJsonAsync<CreateExitSlipRequestDto>("ExitSlip", createExitSlipRequestDto);
         }
 
         async Task IExitSlipClient.DeleteExitSlip(Guid id)
