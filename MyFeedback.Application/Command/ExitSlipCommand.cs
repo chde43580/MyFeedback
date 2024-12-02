@@ -60,7 +60,10 @@ namespace MyFeedback.Application.Command
 
                 ExitSlip oldExitSlip = _exitSlipRepo.GetExitSlip(updateExitSlipDto.Id);
 
-                oldExitSlip.QuestionList = updateExitSlipDto.QuestionList;
+                foreach (var question in updateExitSlipDto.QuestionList)
+                {
+                    oldExitSlip.QuestionList.Add(new Question(question.QuestionNumber, question.QuestionText));
+                }
 
                 oldExitSlip.IsPublished = updateExitSlipDto.IsPublished;      
 

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using MyFeedback.Infrastructure;
-using MyFeedback.Application;
 using MyFeedback.Frontend.TypedClients.Interfaces;
 using MyFeedback.Frontend.TypedClients.Implementations;
 
