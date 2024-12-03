@@ -5,7 +5,7 @@ using MyFeedback.Application.Command.CommandDto.ForumPost;
 using MyFeedback.Application.Query;
 using MyFeedback.Application.Query.QueryDto;
 
-namespace MyFeedback.Frontend.Pages
+namespace MyFeedback.Login.Pages
 {
     public class CreateForumPostModel : PageModel
     {

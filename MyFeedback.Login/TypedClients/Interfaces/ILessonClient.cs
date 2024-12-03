@@ -1,6 +1,6 @@
 ﻿using Shared;
 
-namespace MyFeedback.Frontend.TypedClients.Interfaces
+namespace MyFeedback.Login.TypedClients.Interfaces
 {
     public interface ILessonClient
     {

@@ -5,14 +5,18 @@ services:
       context: .
       dockerfile: MyFeedback.Backend/Dockerfile
 
-  myfeedback.frontend:
-    image: ${DOCKER_REGISTRY-}myfeedbackfrontend
+  myfeedback.login:
+    image: ${DOCKER_REGISTRY-}myfeedbacklogin
     build:
       context: .
-      dockerfile: MyFeedback.Frontend/Dockerfile
+      dockerfile: MyFeedback.Login/Dockerfile
 
   mailcatcher:
     image: haravich/fake-smtp-server
+ 
+  myfeedback.blazorfrontend:
+    image: ${DOCKER_REGISTRY-}myfeedbackblazorfrontend
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: MyFeedback.BlazorFrontend/Dockerfile
+    

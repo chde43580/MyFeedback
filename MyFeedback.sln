@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Test", "MyFeedback.Test\MyFeedback.Test.csproj", "{A90026F9-EFD6-4095-90D1-46D4DC789522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Frontend", "MyFeedback.Frontend\MyFeedback.Frontend.csproj", "{6DCFB465-D3EB-4DB9-A0CE-4661EB4391C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.Login", "MyFeedback.Frontend\MyFeedback.Login.csproj", "{6DCFB465-D3EB-4DB9-A0CE-4661EB4391C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.DatabaseMigration", "MyFeedback.DatabaseMigration\MyFeedback.DatabaseMigration.csproj", "{8B624C89-20E3-46D1-AE1D-BFB9EF25989D}"
 EndProject
@@ -21,10 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csp
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
-	ProjectSection(SolutionItems) = preProject
-		Dockerfile = Dockerfile
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFeedback.BlazorFrontend", "MyFeedback.BlazorFrontend\MyFeedback.BlazorFrontend.csproj", "{B096F317-9B4F-49B5-AF3D-834ADB2F06F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +65,10 @@ Global
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B096F317-9B4F-49B5-AF3D-834ADB2F06F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B096F317-9B4F-49B5-AF3D-834ADB2F06F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B096F317-9B4F-49B5-AF3D-834ADB2F06F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B096F317-9B4F-49B5-AF3D-834ADB2F06F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

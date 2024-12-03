@@ -27,6 +27,8 @@ namespace MyFeedback.Frontend.Pages
 
            ExitSlipDtoList = await _exitSlipClient.GetAllExitSlips();
 
+            
+
 
 
             return Page();

@@ -3,7 +3,7 @@ using MyFeedback.Frontend.Pages.Model;
 using MyFeedback.Application.Query.QueryDto;
 using Shared;
 
-namespace MyFeedback.Frontend.TypedClients.Interfaces
+namespace MyFeedback.Login.TypedClients.Interfaces
 {
     public interface IExitSlipClient
     {
