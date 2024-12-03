@@ -5,7 +5,7 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "myfeedback.backend": "StartDebugging",
-        "myfeedback.frontend": "StartDebugging"
+        "myfeedback.login": "StartDebugging"
       }
     }
   }

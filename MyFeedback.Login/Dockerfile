@@ -12,24 +12,24 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["MyFeedback.Frontend/MyFeedback.Frontend.csproj", "MyFeedback.Frontend/"]
+COPY ["MyFeedback.Login/MyFeedback.Login.csproj", "MyFeedback.Login/"]
 COPY ["MyFeedback.DatabaseMigration/MyFeedback.DatabaseMigration.csproj", "MyFeedback.DatabaseMigration/"]
 COPY ["MyFeedback.Infrastructure/MyFeedback.Infrastructure.csproj", "MyFeedback.Infrastructure/"]
 COPY ["MyFeedback.Application/MyFeedback.Application.csproj", "MyFeedback.Application/"]
 COPY ["MyFeedback.Domain/MyFeedback.Domain.csproj", "MyFeedback.Domain/"]
 COPY ["Shared/Shared.csproj", "Shared/"]
-RUN dotnet restore "./MyFeedback.Frontend/MyFeedback.Frontend.csproj"
+RUN dotnet restore "./MyFeedback.Login/MyFeedback.Login.csproj"
 COPY . .
-WORKDIR "/src/MyFeedback.Frontend"
-RUN dotnet build "./MyFeedback.Frontend.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/MyFeedback.Login"
+RUN dotnet build "./MyFeedback.Login.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./MyFeedback.Frontend.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./MyFeedback.Login.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MyFeedback.Frontend.dll"]
+ENTRYPOINT ["dotnet", "MyFeedback.Login.dll"]
